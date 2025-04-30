@@ -91,3 +91,23 @@ export const DELETE_NOTE = gql`
         }
     }
 `;
+
+export const ADD_ROLE = gql`
+  mutation addRole($id: ID!, $role: String!) {
+    addRole(id: $id, role: $role) {
+      _id
+      username
+      roles
+    }
+  }
+`;
+
+export const REMOVE_ROLE = gql`
+  mutation removeRole($id: ID!, $role: String!) {
+    removeRole(id: $id, role: $role) {
+      _id
+      username
+      roles
+    }
+  }
+`

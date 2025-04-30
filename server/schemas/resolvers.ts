@@ -7,6 +7,16 @@ interface Context {
     note?: Note;
   }
 
+interface AddRoleArgs {
+    id: string;
+    role: string;
+  }
+  
+interface RemoveRoleArgs {
+    id: string;
+    role: string;
+  }
+
 
 const resolvers = {
 Query: {
@@ -102,6 +112,25 @@ Mutation: {
       throw new Error('Note not found');
     }
     return deletedNote;
+  },
+  addRole: async (_parent: unknown, { id, role }: AddRoleArgs) => {
+    return await User.findOneAndUpdate(
+      { _id: id },
+      {
+        $addToSet: { roles: role },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+  },
+  removeRole: async (_parent: unknown, { id, role }: RemoveRoleArgs) => {
+    return await User.findOneAndUpdate(
+      { _id: id },
+      { $pull: { roles: role } },
+      { new: true }
+    );
   },
 }};
 

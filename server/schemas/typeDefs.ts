@@ -40,7 +40,9 @@ const typeDefs = gql`
         deleteUser(_id: ID!): User
         createNote(customerName: String!, customerContact: String!, text: String!): Note
         updateNote(_id: ID!, customerName: String, customerContact: String, user: String, title: String, text: String!, completed: Boolean): Note
-        deleteNote(noteId: ID!): Note
+        deleteNote(id: ID!): Note
+        addRole(id: ID!, role: String): User
+        removeRole(id: ID!, role: String): User
     }
 `;
 
