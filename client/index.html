@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Hive</title>
+    <link rel="stylesheet" href="src/index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="honeycomb-background"></div>
+        <header>
+            <h1>Help Hive</h1>
+            
+            <!-- Hamburger Button (3 bars only) -->
+            <div class="menu-container">
+                <button id="menuButton" class="hamburger-button" aria-label="Menu">
+                    <div class="hamburger-icon">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Empty Dropdown (kept for structure but no items) -->
+            <nav id="dropdownMenu" class="dropdown-menu">
+                <!-- Empty menu - no items -->
+            </nav>
+        </header>
+        
+        <main>
+            <form id="helpForm">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="contactInfo" name="contactInfo" placeholder="Email and Phone" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="issue" name="issue" placeholder="Request Help - Issues" rows="10" required></textarea>
+                </div>
+                <div class="form-group submit-container">
+                    <button type="submit" id="submitBtn">Submit</button>
+                </div>
+            </form>
+        </main>
+        
+        <!-- Date/Time Display - Updated with new value -->
+        <div class="datetime">
+            <span id="currentDateTime">Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted): 2025-04-30 01:27:43</span>
+        </div>
+        
+        <!-- Current User Display - Updated with new value -->
+        <div class="user-info">
+            <span id="currentUser">Current User's Login: notTehwhat</span>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
