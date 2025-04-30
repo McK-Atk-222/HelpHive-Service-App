@@ -3,15 +3,20 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const noteSchema = new mongoose.Schema(
     {
-        //NEED TO ADD CUSTOMER FORM DATA
+        customerName: {
+            type: String,
+            default: 'N/A'
+        },
+        customerContact: {
+            type: String,
+            default: 'N/A'
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            required: true,
             ref: 'User'
         },
         title: {
             type: String,
-            required: true
         },
         text: {
             type: String,
