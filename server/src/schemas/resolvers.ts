@@ -1,5 +1,5 @@
 import  { User, Note }  from '../models/index.js';
-import { signToken, AuthenticationError } from '../utils/auth.js';
+import { signToken, AuthenticationError } from '../../utils/auth.js';
 
 
 interface Context {
