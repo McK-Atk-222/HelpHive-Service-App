@@ -6,7 +6,7 @@ export const GET_USER = gql`
         _id
         username
         email
-        [role]
+        role
     }
   }
 `;
@@ -18,7 +18,7 @@ export const GET_ALL_USERS = gql`
         _id
         username
         email
-        [role]
+        role
     }
     ]}
 `;
