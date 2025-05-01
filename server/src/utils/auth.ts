@@ -24,7 +24,7 @@ export const authenticateToken = ({ req }: any) => {
   return req;
 };
 
-export const signToken = (_id: unknown, username: string, email: string, role: string[]) => {
+export const signToken = (_id: unknown, username: string, email: string, role: String) => {
   const payload = { _id, username, email, role };
   const secretKey: any = process.env.JWT_SECRET_KEY;
   const expiration ='2h';
