@@ -1,17 +1,16 @@
 import { Schema, model, type Document } from 'mongoose';
 
+
 export interface NoteDocument extends Document {
   id: string;
   customerName: string;
   customerContact: string;
-  user: string;
+  user: Schema.Types.ObjectId;
   title: string;
   text: string;
   completed: boolean;
 }
 
-const mongoose = require('mongoose')
-const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const noteSchema = new Schema<NoteDocument>(
   {
@@ -24,7 +23,7 @@ const noteSchema = new Schema<NoteDocument>(
         default: 'N/A'
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
     title: {
@@ -44,12 +43,6 @@ const noteSchema = new Schema<NoteDocument>(
     timestamps: true
 }
 )
-
-noteSchema.plugin(AutoIncrement, {
-inc_field: 'ticket',
-id: 'ticketNums',
-start_seq: 500
-})
 
 
 const Note = model<NoteDocument>('Note', noteSchema);

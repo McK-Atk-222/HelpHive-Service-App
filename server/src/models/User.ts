@@ -1,12 +1,12 @@
 import { Schema, model, type Document } from 'mongoose';
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 export interface UserDocument extends Document {
   id: string;
   username: string;
   email: string;
   password: string;
-  role: String[];
+  role: String;
   isCorrectPassword(password: string): Promise<boolean>;
 }
 
@@ -28,7 +28,7 @@ const userSchema = new Schema<UserDocument>(
       required: true,
     },
     role: {
-      type: [String],
+      type: String,
       required: true,
       default: 'Employee'
     }

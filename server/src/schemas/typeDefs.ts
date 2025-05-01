@@ -12,7 +12,7 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
-        role: [String]!
+        role: String!
     }
 
     type Note {
@@ -36,7 +36,7 @@ const typeDefs = gql`
         register(username: String!, email: String!, password: String!, role: String!): Auth
         login(email: String!, password: String!): Auth
         logout: Boolean
-        updateUser(_id: ID, username: String!, email: String, password: String, role: [String]): User
+        updateUser(_id: ID, username: String!, email: String, password: String, role: String): User
         deleteUser(_id: ID!): User
         createNote(customerName: String!, customerContact: String!, text: String!): Note
         updateNote(_id: ID!, customerName: String, customerContact: String, user: String, title: String, text: String!, completed: Boolean): Note
