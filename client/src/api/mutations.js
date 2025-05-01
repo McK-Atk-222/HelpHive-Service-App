@@ -1,4 +1,4 @@
-import { gql } from '@apollo/cleint';
+import { gql } from '@apollo/client';
 
 // Create a mutation to register a new user
 export const REGISTER_USER = gql`
