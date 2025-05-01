@@ -37,13 +37,13 @@ export const LOGOUT_USER = gql`
 //CHECK ROLE, NEEDS TO BE ARRAY
 
 export const UPDATE_USER = gql`
-  mutation updateUser($id: ID, $username: String, $email: String, $password: String, $role: [String]) {
+  mutation updateUser($id: ID, $username: String, $email: String, $password: String, $role: String) {
     updateUser(id: $id, username: $username, email: $email, password: $password, role: $role) {
       _id
       username
       email
       password
-      [role]
+      role
     }
   }
 `;
@@ -97,7 +97,7 @@ export const ADD_ROLE = gql`
     addRole(id: $id, role: $role) {
       _id
       username
-      roles
+      role
     }
   }
 `;
@@ -107,7 +107,7 @@ export const REMOVE_ROLE = gql`
     removeRole(id: $id, role: $role) {
       _id
       username
-      roles
+      role
     }
   }
 `
