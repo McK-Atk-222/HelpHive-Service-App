@@ -37,12 +37,12 @@ export const LOGOUT_USER = gql`
 //CHECK ROLE, NEEDS TO BE ARRAY
 
 export const UPDATE_USER = gql`
-  mutation updateUser($id: ID, $username: String, $email: String, $password: String, $role: String) {
-    updateUser(id: $id, username: $username, email: $email, password: $password, role: $role) {
+  mutation updateUser($id: ID, $username: String, $email: String, $role: String) {
+    updateUser(id: $id, username: $username, email: $email, role: $role) {
       _id
       username
       email
-      password
+
       role
     }
   }
@@ -69,9 +69,9 @@ export const CREATE_NOTE = gql`
 `;
 
 export const UPDATE_NOTE = gql`
-  mutation updateNote($id: ID!, $customerName: String, $customerContact: String, $user: String, $title: String, $text: String!, $completed: Boolean) {
-    updateNote(id: $id, customerName: $customerName, customerContact: $customerContact, user: $user, title: $title, text: $text, completed: $completed) {
-      id
+  mutation updateNote($_id: ID!, $customerName: String, $customerContact: String, $user: String, $title: String, $text: String!, $completed: Boolean) {
+    updateNote(_id: $_id, customerName: $customerName, customerContact: $customerContact, user: $user, title: $title, text: $text, completed: $completed) {
+      _id
       customerName
       customerContact
       user
@@ -83,31 +83,11 @@ export const UPDATE_NOTE = gql`
 `;
 
 export const DELETE_NOTE = gql`
-    mutation deleteNote($id: ID!) {
-        deleteNote(id: $id) {
-            id
+    mutation deleteNote($_id: ID!) {
+        deleteNote(_id: $_id) {
+            _id
             title
             content
         }
     }
-`;
-
-export const ADD_ROLE = gql`
-  mutation addRole($id: ID!, $role: String!) {
-    addRole(id: $id, role: $role) {
-      _id
-      username
-      role
-    }
-  }
-`;
-
-export const REMOVE_ROLE = gql`
-  mutation removeRole($id: ID!, $role: String!) {
-    removeRole(id: $id, role: $role) {
-      _id
-      username
-      role
-    }
-  }
 `

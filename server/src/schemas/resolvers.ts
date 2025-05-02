@@ -2,7 +2,7 @@ import  { User, Note }  from '../models/index.js';
 import { signToken, AuthenticationError } from '../utils/auth.js';
 
 interface IUser {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -10,7 +10,7 @@ interface IUser {
 }
 
 interface INote {
-  id: string;
+  _id: string;
   customerName: string;
   customerContact: string;
   user: string;
@@ -24,28 +24,24 @@ interface Context {
     note?: INote;
   }
 
-interface AddRoleArgs {
-    id: string;
-    role: string;
-  }
-  
-interface RemoveRoleArgs {
-    id: string;
-    role: string;
-  }
-
 
 const resolvers = {
 Query: {
-  getUser: async (_parent: any, _args: any, context: Context): Promise< IUser | null> => {
+  me: async (_parent: any, _args: any, context: Context): Promise< IUser | null> => {
     if (context.user) {
-      return await User.findOne({ _id: context.user.id });
+      return await User.findOne({ _id: context.user._id });
     }
     throw AuthenticationError;
   },
-  getNote: async (_parent: any, args: any, context: Context): Promise< IUser | null> => {
+  getUser: async (_parent: any, args: any, context: Context): Promise< IUser | null> => {
     if (context.user) {
-      return await Note.findOne({ _id: args.id });
+      return await User.findOne({ _id: args._id });
+    }
+    throw AuthenticationError;
+  },
+  getNote: async (_parent: any, args: any, context: Context): Promise< INote | null> => {
+    if (context.user) {
+      return await Note.findOne({ _id: args._id });
     }
     throw AuthenticationError;
   },
@@ -69,7 +65,7 @@ Query: {
 Mutation: {
   register: async (_:any, { username, email, password, role }:IUser) => {
     const user = await User.create({ username, email, password, role });
-    const token = signToken( user.username, user.email, user.password, user.role );
+    const token = signToken( user._id, user.username, user.email, user.role );
     return { token, user };
   },
   login: async (_:any, { email, password }:IUser) => {
@@ -77,24 +73,26 @@ Mutation: {
     if (!user || !(await user.isCorrectPassword(password))) {
         throw new AuthenticationError('Invalid credentials');
     }
-    const token = signToken( user.username, user.email, user.password, user.role );
+    const token = signToken( user._id, user.username, user.email, user.role );
     return { token, user };
   },
-  logout: async (_:any, __:any, { context }:any) => {
-    context.token = null;
+  logout: async (_:any, __:any, context :any) => {
+    context.headers.authorization = "";
     return true;
   },
-  updateUser: async (_:any, { id, username, email, password, role }:IUser) => {
+  updateUser: async (_:any, { _id, username, email, role }:IUser) => {
+    if (!role) role = "Employee"
     const updatedUser = await User.findByIdAndUpdate(
-      id,
-      { username, email, password, role },
+      _id,
+      { username, email, role },
       { new: true } // Return the updated user
     );
+
     return updatedUser;
   },
-  deleteUser: async (_:any, { id }:IUser) => {
+  deleteUser: async (_:any, { _id }:IUser) => {
     // Find the user and delete them
-    const deletedUser = await User.findByIdAndDelete(id);
+    const deletedUser = await User.findByIdAndDelete(_id);
     // Check if the user was found and deleted
     if (!deletedUser) {
       throw new Error('User not found');
@@ -110,9 +108,9 @@ Mutation: {
     });
     return newNote;
   },
-  updateNote: async (_:any, { id, customerName, customerContact, user, title, text, completed }:INote) => {
+  updateNote: async (_:any, { _id, customerName, customerContact, user, title, text, completed }:INote) => {
     const updatedNote = await Note.findByIdAndUpdate(
-      id,
+      _id,
       { customerName, customerContact, user, title, text, completed },
       { new: true } // Return the updated note
     );
@@ -122,32 +120,13 @@ Mutation: {
     }
     return updatedNote;
   },
-  deleteNote: async (_:any, { id }:INote) => {
-    const deletedNote = await Note.findByIdAndDelete(id);
+  deleteNote: async (_:any, { _id }:INote) => {
+    const deletedNote = await Note.findByIdAndDelete(_id);
     // Check if the user was found and deleted
     if (!deletedNote) {
       throw new Error('Note not found');
     }
     return deletedNote;
-  },
-  addRole: async (_parent: unknown, { id, role }: AddRoleArgs) => {
-    return await User.findOneAndUpdate(
-      { id: id },
-      {
-        role
-      },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-  },
-  removeRole: async (_parent: unknown, { id }: RemoveRoleArgs) => {
-    return await User.findOneAndUpdate(
-      { id: id },
-      { role: 'Employee' },
-      { new: true }
-    );
   },
 }};
 

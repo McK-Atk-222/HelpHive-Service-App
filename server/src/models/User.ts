@@ -29,7 +29,6 @@ const userSchema = new Schema<UserDocument>(
     },
     role: {
       type: String,
-      required: true,
       default: 'Employee'
     }
   },
