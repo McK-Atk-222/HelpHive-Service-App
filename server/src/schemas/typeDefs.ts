@@ -10,39 +10,38 @@ const typeDefs = gql`
         
     type User {
         _id: ID!
-        username: String!
-        email: String!
-        role: String!
+        username: String
+        email: String
+        role: String
     }
 
     type Note {
-        _id: String
+        _id: String!
         customerName: String
         customerContact: String
         user: String
         title: String
-        text: String!
+        text: String
         completed: Boolean
     }
 
     type Query {
-        getUser: User
-        getNote: Note
+        me: User
+        getUser(_id:ID!): User
+        getNote(_id:ID!): Note
         getAllUsers: [User]
         getAllNotes: [Note]
     }
     
     type Mutation {
-        register(username: String!, email: String!, password: String!, role: String!): Auth
+        register(username: String!, email: String!, password: String!, role: String): Auth
         login(email: String!, password: String!): Auth
         logout: Boolean
-        updateUser(_id: ID, username: String!, email: String, password: String, role: String): User
+        updateUser(_id: ID!, username: String, email: String, role: String): User
         deleteUser(_id: ID!): User
         createNote(customerName: String!, customerContact: String!, text: String!): Note
-        updateNote(_id: ID!, customerName: String, customerContact: String, user: String, title: String, text: String!, completed: Boolean): Note
-        deleteNote(id: ID!): Note
-        addRole(id: ID!, role: String): User
-        removeRole(id: ID!, role: String): User
+        updateNote(_id: ID!, customerName: String, customerContact: String, user: String, title: String, text: String, completed: Boolean): Note
+        deleteNote(_id: ID!): Note
     }
 `;
 
