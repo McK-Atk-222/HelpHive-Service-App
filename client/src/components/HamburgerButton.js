@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const HamburgerButton = () => {
   const [isClicked, setIsClicked] = useState(false);

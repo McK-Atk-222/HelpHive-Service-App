@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const HelpForm = () => {
   const [formData, setFormData] = useState({
@@ -96,7 +96,7 @@ const HelpForm = () => {
           id="issue"
           name="issue"
           placeholder="Request Help - Issues"
-          rows="10"
+          rows={10}
           required
           style={textareaStyle}
           value={formData.issue}
