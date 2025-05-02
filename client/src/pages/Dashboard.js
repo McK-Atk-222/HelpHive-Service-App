@@ -4,12 +4,12 @@ import { ROLES } from '../config/roles';
 
 const Dashboard = () => {
     // Function to get the current user from auth context
-    const { user } = useAuth();
+    const { authData } = useAuth();
+    const user = authData?.user;
 
     // Incase user doesn't load, don't render anything..
-    if (!user) {
-        return <p>Loading user data...</p>
-    }
+    if (!user) return <p>Loading user data...</p>;
+    
 
     return (
         <div classname="dashboard">

@@ -3,7 +3,8 @@ import { useAuth } from '../context/AuthContext';
 
 // PrivateRoute component that wraps around other components and ensures the user is logged in
 const PrivateRoute = ({ children }) => {
-    const { token } = useAuth(); 
+    const { authData } = useAuth();
+    const { token } = authData?.token; 
 
     // If token is missing, user isn't authenticated. It will redirect them to login page
     if (!token) {

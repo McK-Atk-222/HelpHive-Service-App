@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useMutation } from '@apollo/cleint';
+import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../api/mutations';
 import { useAuth } from '../context/AuthContext';
 
@@ -55,9 +55,9 @@ const Register = () => {
                     required
                 />
                 <select name="role" value={formData.role} onChange={handleChange}>
-                    <option value="EMPLOYEE">Employee</option>
-                    <option value="MANAGER">Manager</option>
-                    <option value="ADMIN">Admin</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
                 </select>
                 <button type="submit">Register</button>
             </form>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { ROLES } from '../config/roles';
 
 const AdminPanel = () => {
-    const { user } = useAuth();
+    const { authData } = useAuth();
+    const user = AuthData?.user;
 
     // 'Loading...' if user isn't ready yet
     if (!user) return <p>Loading...</p>;
