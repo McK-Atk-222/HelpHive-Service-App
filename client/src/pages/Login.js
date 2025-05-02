@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../api/mutations';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' });
-
     const { login } = useAuth();
+    const navigate = useNavigate();
 
     const [loginUser, { error }] = useMutation(LOGIN_USER);
 
