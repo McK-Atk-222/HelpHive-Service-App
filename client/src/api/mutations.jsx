@@ -37,8 +37,8 @@ export const LOGOUT_USER = gql`
 //CHECK ROLE, NEEDS TO BE ARRAY
 
 export const UPDATE_USER = gql`
-  mutation updateUser($id: ID, $username: String, $email: String, $role: String) {
-    updateUser(id: $id, username: $username, email: $email, role: $role) {
+  mutation updateUser($_id: ID, $username: String, $email: String, $role: String) {
+    updateUser(_id: $_id, username: $username, email: $email, role: $role) {
       _id
       username
       email
@@ -48,8 +48,8 @@ export const UPDATE_USER = gql`
 `;
 
 export const DELETE_USER = gql`
-  mutation deleteUser($id: ID!) {
-    deleteUser(id: $id) {
+  mutation deleteUser($_id: ID!) {
+    deleteUser(_id: $_id) {
       _id
       username
       email
@@ -83,10 +83,10 @@ export const UPDATE_NOTE = gql`
 
 export const DELETE_NOTE = gql`
     mutation deleteNote($_id: ID!) {
-        deleteNote(_id: $_id) {
+        deleteNote(_id: $id) {
             _id
             title
-            content
+            text
         }
     }
 `
