@@ -76,3 +76,5 @@ const EditableCard = ({data}) => {
             </div>
         );
     };
+
+    export default EditableCard;
