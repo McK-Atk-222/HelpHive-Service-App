@@ -18,9 +18,11 @@ const adminButtonStyle = {
     transition: 'background-color 0.2s, transform 0.1s'
   };
   const buttonContainerStyle = {
-    textAlign: 'right',
+    display: 'flex', // Use flexbox to align buttons side by side
+    justifyContent: 'flex-end', // Align buttons to the right
+    gap: '10px', // Add spacing between buttons
     padding: '10px'
-  };
+};
 
 const Dashboard = () => {
     // Function to get the current user from auth context
@@ -39,12 +41,10 @@ const Dashboard = () => {
         return (
         <div>
             <div style={buttonContainerStyle}>
-                <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout</button>
-            </div>
-            <div style={buttonContainerStyle}>
-                <a href="/admin">
-                <button style={adminButtonStyle}>Admin Panel</button>
-                </a>
+                    <button style={adminButtonStyle} onClick={() => { auth.logout() }}>Logout</button>
+                    <a href="/admin">
+                        <button style={adminButtonStyle}>Admin Panel</button>
+                    </a>
             </div>
             <div classname="dashboard">
                 <h1>Welcome, {userData.username || 'User'}!</h1>
