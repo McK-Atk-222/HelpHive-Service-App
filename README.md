@@ -40,7 +40,7 @@ As a non-registered user, I can submit public help requests through the homepage
     * Mongoose (MongoDB)
 
 ## Future Development
-Future devlopment may implementing socket.io or live updates when new task is received. Better backend authentication would be a direction to go as well. Lastly, adding more options and controls to make this a more functional product would be beneficial.
+Future development may implementing socket.io or live updates when new task is received. Better backend authentication would be a direction to go as well. Lastly, adding more options and controls to make this a more functional product would be beneficial.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
