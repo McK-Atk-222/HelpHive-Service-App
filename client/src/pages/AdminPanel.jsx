@@ -112,9 +112,12 @@ const AdminPanel = (userRole) => {
         // Incase user doesn't load, don't render anything..
         if (!data) return <p>Loading data...</p>; 
 
-        return (
-          <div className="AdminPanel">
-              <div style={containerStyle}>
+
+    return (
+        <div className="AdminPanel">
+            <h1 style={h1Style}>🔧 Admin Controls</h1>
+            <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
+            <div style={containerStyle}>
                 <a href="/dashboard">
               <button style={backButtonStyle}>Back to Dashboard</button>
               </a>

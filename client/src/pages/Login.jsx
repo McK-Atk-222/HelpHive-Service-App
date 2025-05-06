@@ -107,7 +107,7 @@ const Login = () => {
             <button style={backButtonStyle}>Back</button>
             </a>
             </div>
-            <h2 style={h2Style}>Login</h2>
+            <h2 style={h2Style}>Login 🔐</h2>
             <form style={formStyle}onSubmit={handleSubmit}>
                 <div style={formGroupStyle}>
                 <input 

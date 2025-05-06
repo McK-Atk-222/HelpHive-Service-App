@@ -29,7 +29,7 @@ const startApolloServer = async () => {
 
   app.use('/graphql', expressMiddleware(server as any,
     {
-      context: authenticateToken as any
+      context: authenticateToken as any //THROWING INVALID TOKEN
     }
   ));
 

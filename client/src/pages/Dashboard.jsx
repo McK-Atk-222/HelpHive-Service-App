@@ -28,26 +28,28 @@ const Dashboard = () => {
     // Function to get the current user from auth context
     const { authData } = useAuth() || {};
     const user = authData?.user;
+    
     if (!auth.loggedIn){
         window.location.href = "/login"
     }
+
     const { data, loading } = useQuery(ME)
 
     const userData = data?.me || {}
     // Incase user doesn't load, don't render anything..
-    if (loading) return <p>Loading data...</p>;
+    if (loading) return <p>Loading data...🐝</p>;
 
     if (userData.role === "Admin") {
         return (
         <div>
             <div style={buttonContainerStyle}>
-                    <button style={adminButtonStyle} onClick={() => { auth.logout() }}>Logout</button>
+                    <button style={adminButtonStyle} onClick={() => { auth.logout() }}>Logout 🔐</button>
                     <a href="/admin">
                         <button style={adminButtonStyle}>Admin Panel</button>
                     </a>
             </div>
             <div classname="dashboard">
-                <h1>Welcome, {userData.username || 'User'}!</h1>
+                <h1>Welcome, {userData.username || 'User'}! 🍯</h1>
                 <p>Your Role: <strong>{userData.role}</strong></p>
                 
                 <TaskCard userRole={userData.role}/>
@@ -60,9 +62,9 @@ const Dashboard = () => {
     return (
         <div classname="dashboard">
             <div style={buttonContainerStyle}>
-                <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout</button>
+                <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout 🔐</button>
             </div>
-            <h1>Welcome, {userData.username || 'User'}!</h1>
+            <h1>Welcome, {userData.username || 'User'}! 🍯</h1>
             <p>Your Role: <strong>{userData.role}</strong></p>
             
             <TaskCard userRole={userData.role}/>
