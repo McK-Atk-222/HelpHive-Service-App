@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 import { ME } from '../api/queries';
 import auth from '../utils/auth';
 import { Link } from 'react-router-dom';
+import Unauthorized from './Unauthorized';
 
 const formStyle = {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -86,14 +87,7 @@ const Register = () => {
     if (!auth.loggedIn()){
                 window.location.href = "/login"
             } else if (auth.getProfile().data.role !== "Admin"){
-                return <>
-                <div className="unauthorized">
-                            <h1>Access Denied</h1>
-                            <p>You do not have permission to view this page</p>
-                
-                            <Link to="/dashboard">Go back to Dashboard</Link>
-                        </div>
-                </>
+                return Unauthorized()
             }
 
     // Track form input values
