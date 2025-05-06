@@ -112,26 +112,26 @@ const AdminPanel = (userRole) => {
         // Incase user doesn't load, don't render anything..
         if (!data) return <p>Loading data...</p>; 
 
-    return (
-        <div className="AdminPanel">
-            <h1 style={h1Style}>Admin Controls</h1>
-            <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
-            <div style={containerStyle}>
+        return (
+          <div className="AdminPanel">
+              <div style={containerStyle}>
                 <a href="/dashboard">
-            <button style={backButtonStyle}>Back to Dashboard</button>
-            </a>
-            </div>
-            <div style={containerStyle}>
-                <a href="/admin/register">
-            <button style={backButtonStyle}>Register New User</button>
-                </a>
-            </div>
-            <section>
-                <h2 style={h2Style}>User Management</h2>
-                <UserCard userRole={data.me.role}/>
-            </section>
-        </div>
-    );
+              <button style={backButtonStyle}>Back to Dashboard</button>
+              </a>
+                <a href="/admin/register" style={{marginLeft: '10px' }}>
+              <button style={backButtonStyle}>Register New User</button>
+                  </a>
+              </div>
+
+              <h1 style={h1Style}>Admin Controls</h1>
+              <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
+              
+              <section style={{ width: '100%' }}>
+                  <h2 style={h2Style}>User Management</h2>
+                  <UserCard userRole={data.me.role}/>
+              </section>
+          </div>
+      );
     // }
 };
 
