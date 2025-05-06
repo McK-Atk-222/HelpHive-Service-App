@@ -1,14 +1,14 @@
 ## HelpHive Service App
-HelpHive is a MERN-stack application that allows users to request help and manage incoming support tasks within an organized, role-based system. Users can register for an account, log in securely, and access different functionalities depending on their role: Employee, Manager, or Admin.
+HelpHive is a MERN-stack application that allows users to request help and manage incoming support tasks within an organized, role-based system. Users registered for an account by an Admin can log in securely, and access different functionalities depending on their role: Employee, Manager, or Admin.
 
 ## Table of Contents
-* Installation
-* Usage
-* Technologies Used
-* Features
-* Future Development
-* License
-* Contributors
+* [Installation](#installation)
+* [Usage](#usage)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Future Development](#future-development)
+* [License](#license)
+* [Contributors](#contributors)
 
 ## Installation
 1. Install dependencies
@@ -21,8 +21,8 @@ HelpHive is a MERN-stack application that allows users to request help and manag
 ## Usage
 As a new user, I can register by selecting a username, email, password, and role.
 As an existing user, I can log in using my credentials
-As an Employee, I can see my assigned tasks
-As a Manager, I can assign tasks and update employees task status
+As an Employee, I can see my tasks and edit case notes
+As a Manager, I can assign tasks and update all elements of task cards as including completion status
 As an Administrator, I can manage other users accounts
 As a non-registered user, I can submit public help requests through the homepage without creating an account.
 
@@ -40,9 +40,10 @@ As a non-registered user, I can submit public help requests through the homepage
     * Mongoose (MongoDB)
 
 ## Future Development
-
+Future devlopment may implementing socket.io or live updates when new task is received. Better backend authentication would be a direction to go as well. Lastly, adding more options and controls to make this a more functional product would be beneficial.
 
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Contributors
 * McKay Atkinson
@@ -53,10 +54,17 @@ As a non-registered user, I can submit public help requests through the homepage
 ## Screenshots
 [!Main Page](assets/HelpHive - Main Page.png)
 [!Login Page](assets/HelpHive - User Login.png)
-[!Task Board]()
+[!Task Board](assets/HelpHive - Task Board.png)
 [!User Registration](assets/HelpHive - Register User.png)
 [!Admin Controls Page](assets/HelpHive - Admin Controls Page.png)
 
 ## Links
 GitHub Repo: https://github.com/McK-Atk-222/HelpHive-Service-App.git
+
 Deployment Link: https://helphive-service-app.onrender.com/
+
+Deployed App Users:
+
+Admin1: (a1@gmail.com, 111)
+Manager2: (m2@gmail.com, 222)
+Employee3: (e3@gmail.com, 333)
