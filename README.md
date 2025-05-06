@@ -59,4 +59,4 @@ As a non-registered user, I can submit public help requests through the homepage
 
 ## Links
 GitHub Repo: https://github.com/McK-Atk-222/HelpHive-Service-App.git
-Deployment Link:
+Deployment Link: https://helphive-service-app.onrender.com/
