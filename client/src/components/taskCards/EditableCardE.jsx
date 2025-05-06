@@ -57,6 +57,22 @@ const EditableCardE = ({data}) => {
         gap: "8px", // Gap between elements
     }
 
+    const buttonStyle = {
+        padding: "10px 20px", // Add padding for a better click area
+        fontSize: "16px", // Increase font size for readability
+        borderRadius: "4px", // Rounded corners
+        border: "none", // Remove default border
+        cursor: "pointer", // Pointer cursor on hover
+        transition: "background-color 0.3s, transform 0.2s", // Smooth transitions
+    };
+    
+    const saveButtonStyle = {
+        ...buttonStyle,
+        backgroundColor: "#4CAF50", // Green background for Save
+        color: "white", // White text
+    };
+    
+
     return (
         <div style={cardStyle}>
             {/* Left Column */}
@@ -88,7 +104,7 @@ const EditableCardE = ({data}) => {
                 <p>
                     {formattedTimeStamp}
                 </p>
-                <button onClick={handleUpdateTask}>
+                <button style={saveButtonStyle} onClick={handleUpdateTask}>
                     Save
                 </button>
             </div>
