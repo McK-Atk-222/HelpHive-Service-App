@@ -3,8 +3,18 @@ import userCard from "../UserCard"
 import { useMutation } from "@apollo/client"
 import { DELETE_USER, UPDATE_USER } from "../../api/mutations"
 
+
+
 const EditableCard = ({data}) => {
 
+    const inputStyle = {
+        width: '100%',
+        padding: '12px',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        fontSize: '16px',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)'
+      };
 
     const [cardInfo, setCardInfo] = useState({
         username: data.username,
@@ -24,7 +34,8 @@ const EditableCard = ({data}) => {
             _id: data._id,
             ...cardInfo
             }
-        })
+        }); 
+        alert(`User Updated`);
         } catch (updateError) {
         console.log(updateError)
         }
@@ -61,17 +72,21 @@ const EditableCard = ({data}) => {
                         onChange={handleChange}
                     />
                     <label>Role:</label>
-                    <input 
-                        type="text"
+                    <select
                         name="role"
+                        style={inputStyle}
                         value={cardInfo.role}
                         onChange={handleChange}
-                    />
+                    >
+                    <option value="Employee">Employee</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
+                    </select>
 
                     <button className="save-btn" onClick={handleUpdateUser}>
-                        Save Changes
+                        Save Changes 💾
                     </button>
-                    <button className="remove-btn" onClick={handleUpdateUser}>
+                    <button className="remove-btn" onClick={handleDeleteUser}>
                         Remove User
                     </button>
             </div>

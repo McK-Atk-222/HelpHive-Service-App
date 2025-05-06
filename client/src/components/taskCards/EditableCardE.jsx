@@ -8,12 +8,26 @@ const EditableCardE = ({data}) => {
     const completionText = data.completed?"Status: ✅Completed":"Status: 🟥Incomplete"
 
     const startTimeStamp = new Date(data.createdAt)
-    const options = {month: "long", year: "numeric", day: "2-digit"}
-    const formattedStartTimeStamp = startTimeStamp.toDateString("en-US", options)
+    const formattedStartTimeStamp = startTimeStamp.toLocaleString("en-US", {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      });
 
     const updateTimeStamp = new Date(data.updatedAt)
-    const options2 = {month: "long", year: "numeric", day: "2-digit"}
-    const formattedUpdateTimeStamp = updateTimeStamp.toDateString("en-US", options2)
+    const formattedUpdateTimeStamp = updateTimeStamp.toLocaleString("en-US", {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      });
 
     const [cardInfo, setCardInfo] = useState(
         data.text
@@ -31,22 +45,57 @@ const EditableCardE = ({data}) => {
             text: cardInfo
             }
         })
+        alert(`Task Updated`);
         } catch (error) {
         console.log(error)
         }
     }
 
-    const cardStyle = {
-        border: "1px solid #ccc", // Light gray border
-        borderRadius: "8px", // Rounded corners
-        padding: "16px", // Space inside the box
-        margin: "16px", // Space between cards
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
-        backgroundColor: "#fff8e1", // White background
-        display: "flex", // Flexbox layout for two columns
-        flexDirection: "row", // Arrange children in a row
-        gap: "16px", // Gap between left and right sections
-    }
+    const cardStyle = () => { 
+        let cardStyle;
+    
+        if (data.title === "Manager Review Needed") {
+            cardStyle = {
+                border: "4px solid #FF0000", // Red border
+                borderRadius: "8px", // Rounded corners
+                padding: "16px", // Space inside the box
+                margin: "16px", // Space between cards
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+                backgroundColor: "#fff8e1", // Light yellow background
+                display: "flex", // Flexbox layout for two columns
+                flexDirection: "row", // Arrange children in a row
+                gap: "16px", // Gap between left and right sections
+            };
+        } else {
+            cardStyle = {
+                border: "1px solid #ccc", // Light gray border
+                borderRadius: "8px", // Rounded corners
+                padding: "16px", // Space inside the box
+                margin: "16px", // Space between cards
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+                backgroundColor: "#fff8e1", // Light yellow background
+                display: "flex", // Flexbox layout for two columns
+                flexDirection: "row", // Arrange children in a row
+                gap: "16px", // Gap between left and right sections
+            };
+        }
+    
+        return (
+            cardStyle
+        );
+    };
+
+    // const cardStyle = {
+    //     border: "1px solid #ccc", // Light gray border
+    //     borderRadius: "8px", // Rounded corners
+    //     padding: "16px", // Space inside the box
+    //     margin: "16px", // Space between cards
+    //     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
+    //     backgroundColor: "#fff8e1", // White background
+    //     display: "flex", // Flexbox layout for two columns
+    //     flexDirection: "row", // Arrange children in a row
+    //     gap: "16px", // Gap between left and right sections
+    // }
 
     const leftColumnStyle = {
         flex: "1", // Take up equal space
@@ -76,10 +125,9 @@ const EditableCardE = ({data}) => {
         backgroundColor: "#4CAF50", // Green background for Save
         color: "white", // White text
     };
-    
 
     return (
-        <div style={cardStyle}>
+        <div style={cardStyle()}>
             {/* Left Column */}
             <div style={leftColumnStyle}>
                 <p>Assigned Employee:</p>
@@ -88,10 +136,10 @@ const EditableCardE = ({data}) => {
                     </div>
                 <p>Customer Info:</p>
                 <p>
-                &#9;{data.customerName}
+                {data.customerName}
                 </p>
                 <p>
-                &#9;{data.customerContact}
+                {data.customerContact}
                 </p>
                 <p>Case Notes:</p>
                 <textarea rows={5} value={cardInfo} onChange={handleChange} />

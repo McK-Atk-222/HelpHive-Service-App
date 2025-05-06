@@ -9,6 +9,8 @@ export interface NoteDocument extends Document {
   title: string;
   text: string;
   completed: boolean;
+  createdAt: String;
+  updatedAt: String;
 }
 
 
@@ -37,7 +39,14 @@ const noteSchema = new Schema<NoteDocument>(
     completed: {
         type: Boolean,
         default: false
+    },
+    createdAt: {
+        type: String,
+    },
+    updatedAt: {
+        type: String,
     }
+
 },
 {
     timestamps: true

@@ -24,7 +24,7 @@ const formStyle = {
     width: '100%',
     padding: '12px',
     border: '1px solid #ddd',
-    borderRadius: '4px',
+    borderRadius: '5px',
     fontSize: '16px',
     backgroundColor: 'rgba(255, 255, 255, 0.9)'
   };
@@ -83,7 +83,7 @@ const Register = () => {
     
     //     // Incase user doesn't load, don't render anything..
     //     if (!data) return <p>Loading data...</p>;
-    if (!auth.loggedIn){
+    if (!auth.loggedIn()){
                 window.location.href = "/login"
             } else if (auth.getProfile().data.role !== "Admin"){
                 return <>
@@ -97,7 +97,7 @@ const Register = () => {
             }
 
     // Track form input values
-    const [formData, setFormData] = useState({ username: '', email: '', password: '', role: 'EMPLOYEE'});
+    const [formData, setFormData] = useState({ username: '', email: '', password: '', role: 'Employee'});
 
     // Get login function from AuthContext
     // const { login } = useAuth();
@@ -113,13 +113,12 @@ const Register = () => {
             const { data } = await register({
                 variables: { ...formData },
             });
-            
-            // login(data.register.token);   // Saves token in localStorage
            
             setIsSubmitted(true);
             setTimeout(() => {
                 setIsSubmitted(false);
-              }, 3000);
+              }, 0);
+              setFormData({ username: '', email: '', password: '', role: 'Employee'})
         } catch (err) {
             console.error(err);
         }
@@ -185,7 +184,7 @@ const Register = () => {
                 <button type="submit" style={buttonStyle}>Register</button>
             </form>
             {error && <p>Registration failed! Try again...</p>}
-            {isSubmitted && <p>User Registered successfully!</p>}
+            {isSubmitted && alert(`New User Registered`)}
         </div>
     );
 };
