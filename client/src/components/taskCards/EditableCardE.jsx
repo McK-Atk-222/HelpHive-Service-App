@@ -10,16 +10,20 @@ const EditableCardE = ({data}) => {
     const options = {month: "long", year: "numeric", day: "2-digit"}
     const formattedTimeStamp = timeStamp.toDateString("en-US", options)
 
-    const [cardText, setCardText ] = useState(data.text)
+    const [cardInfo, setCardInfo] = useState(
+        data.text
+    )
 
     const handleChange = (e) => {
-        setCardText(e.target.value)
+        const{value} = e.target
+        setCardInfo(existingData => (value))
     }
     const [updateNote, {error}] = useMutation(UPDATE_NOTE);
     const handleUpdateTask = async () => {
         try { await updateNote({
             variables:{
-            text
+            _id: data._id,
+            text: cardInfo
             }
         })
         } catch (error) {
@@ -68,12 +72,16 @@ const EditableCardE = ({data}) => {
                 <p>
                     {data.customerContact}
                 </p>
+
                 <textarea rows={5} value={cardText} onChange={handleChange} />
             </div>
 
             {/* Right Column */}
             <div style={rightColumnStyle}>
                 <h1>{data.title}</h1>
+
+                    <textarea rows={5} value={cardInfo} onChange={handleChange}/>
+
                 <p>
                     {completionText}
                 </p>
