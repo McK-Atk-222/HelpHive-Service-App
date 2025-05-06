@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../api/mutations';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import auth from '../utils/auth';
 
 const formStyle = {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -91,7 +92,9 @@ const Login = () => {
                 variables: { ...formData },
             });
             // login(data.login.token);
-            localStorage.setItem("id_token", data.login.token)
+            // localStorage.setItem("id_token", data.login.token)
+            // window.location.href = "/dashboard"
+            auth.login(data.login.token)
         } catch (err) {
             console.error(err);
         }
@@ -100,7 +103,9 @@ const Login = () => {
     return (
         <div>
             <div style={buttonContainerStyle}>
+            <a href="/">
             <button style={backButtonStyle}>Back</button>
+            </a>
             </div>
             <h2 style={h2Style}>Login</h2>
             <form style={formStyle}onSubmit={handleSubmit}>

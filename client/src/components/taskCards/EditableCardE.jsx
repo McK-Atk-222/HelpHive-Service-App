@@ -4,7 +4,6 @@ import { useMutation } from "@apollo/client"
 import { UPDATE_NOTE } from "../../api/mutations"
 
 const EditableCardE = ({data}) => {
-    console.log(data)
     const completionText = data.completed?"Completed":"Incomplete"
 
     const timeStamp = new Date(data.createdAt)

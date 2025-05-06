@@ -4,6 +4,8 @@ import { ROLES } from '../config/roles';
 import UserCard from '../components/UserCard';
 import { useQuery } from '@apollo/client';
 import { ME } from '../api/queries';
+import auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 const formStyle = {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -86,6 +88,21 @@ const AdminPanel = (userRole) => {
     const { authData } = useAuth() || {};
     const user = authData?.user;
 
+    if (!auth.loggedIn){
+            window.location.href = "/login"
+        } else if (auth.getProfile().data.role !== "Admin"){
+            return <>
+            <div className="unauthorized">
+                        <h1>Access Denied</h1>
+                        <p>You do not have permission to view this page</p>
+            
+                        <Link to="/dashboard">Go back to Dashboard</Link>
+                    </div>
+            </>
+        }
+
+    console.log(auth.getProfile())
+
     const { data } = useQuery(ME)
 
     // if (data.me.role !== "Admin") {
@@ -100,10 +117,14 @@ const AdminPanel = (userRole) => {
             <h1 style={h1Style}>Admin Controls</h1>
             <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
             <div style={containerStyle}>
+                <a href="/dashboard">
             <button style={backButtonStyle}>Back to Dashboard</button>
+            </a>
             </div>
             <div style={containerStyle}>
+                <a href="/admin/register">
             <button style={backButtonStyle}>Register New User</button>
+                </a>
             </div>
             <section>
                 <h2 style={h2Style}>User Management</h2>

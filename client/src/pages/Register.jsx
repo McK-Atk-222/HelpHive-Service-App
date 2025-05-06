@@ -4,6 +4,8 @@ import { REGISTER_USER } from '../api/mutations';
 import { useAuth } from '../context/AuthContext';
 import { useQuery } from '@apollo/client';
 import { ME } from '../api/queries';
+import auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 const formStyle = {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -81,6 +83,18 @@ const Register = () => {
     
     //     // Incase user doesn't load, don't render anything..
     //     if (!data) return <p>Loading data...</p>;
+    if (!auth.loggedIn){
+                window.location.href = "/login"
+            } else if (auth.getProfile().data.role !== "Admin"){
+                return <>
+                <div className="unauthorized">
+                            <h1>Access Denied</h1>
+                            <p>You do not have permission to view this page</p>
+                
+                            <Link to="/dashboard">Go back to Dashboard</Link>
+                        </div>
+                </>
+            }
 
     // Track form input values
     const [formData, setFormData] = useState({ username: '', email: '', password: '', role: 'EMPLOYEE'});
@@ -122,7 +136,9 @@ const Register = () => {
     return ( 
         <div>
             <div style={containerStyle}>
+            <a href="/admin">
             <button style={backButtonStyle}>Back to Admin Panel</button>
+            </a>
             </div>
             <h2 style={h1Style}>Register</h2>
             <form style={formStyle} onSubmit={handleSubmit}>

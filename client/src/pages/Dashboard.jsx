@@ -4,6 +4,7 @@ import { ROLES } from '../config/roles';
 import TaskCard from '../components/TaskCard';
 import { useQuery } from '@apollo/client';
 import { ME } from '../api/queries';
+import auth from '../utils/auth';
 
 const adminButtonStyle = {
     backgroundColor: 'white',
@@ -25,26 +26,31 @@ const Dashboard = () => {
     // Function to get the current user from auth context
     const { authData } = useAuth() || {};
     const user = authData?.user;
+    if (!auth.loggedIn){
+        window.location.href = "/login"
+    }
+    const { data, loading } = useQuery(ME)
 
-    const { data } = useQuery(ME)
-
+    const userData = data?.me || {}
     // Incase user doesn't load, don't render anything..
-    if (!data) return <p>Loading data...</p>;
+    if (loading) return <p>Loading data...</p>;
 
-    if (data.me.role === "Admin") {
+    if (userData.role === "Admin") {
         return (
         <div>
             <div style={buttonContainerStyle}>
-                <button style={adminButtonStyle}>Logout</button>
+                <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout</button>
             </div>
             <div style={buttonContainerStyle}>
+                <a href="/admin">
                 <button style={adminButtonStyle}>Admin Panel</button>
+                </a>
             </div>
             <div classname="dashboard">
-                <h1>Welcome, {data.me.username || 'User'}!</h1>
-                <p>Your Role: <strong>{data.me.role}</strong></p>
+                <h1>Welcome, {userData.username || 'User'}!</h1>
+                <p>Your Role: <strong>{userData.role}</strong></p>
                 
-                <TaskCard userRole={data.me.role}/>
+                <TaskCard userRole={userData.role}/>
             
             </div>
         </div>)
@@ -54,12 +60,12 @@ const Dashboard = () => {
     return (
         <div classname="dashboard">
             <div style={buttonContainerStyle}>
-                <button style={adminButtonStyle}>Logout</button>
+                <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout</button>
             </div>
-            <h1>Welcome, {data.me.username || 'User'}!</h1>
-            <p>Your Role: <strong>{data.me.role}</strong></p>
+            <h1>Welcome, {userData.username || 'User'}!</h1>
+            <p>Your Role: <strong>{userData.role}</strong></p>
             
-            <TaskCard userRole={data.me.role}/>
+            <TaskCard userRole={userData.role}/>
             
         </div>
     );

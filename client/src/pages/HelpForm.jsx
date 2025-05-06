@@ -99,7 +99,9 @@ const HelpForm = () => {
   return (
     <div>
     <div style={buttonContainerStyle}>
+      <a href="/login">
           <button style={adminButtonStyle}>Login</button>
+       </a>
     </div>
     <form id="helpForm" style={formStyle} onSubmit={handleSubmit}>
       <div style={formGroupStyle} className="form-group">
