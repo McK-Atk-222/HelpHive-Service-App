@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_NOTE } from '../api/mutations';
 
 const formStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  backgroundColor: '#fff8e1',
   padding: '30px',
   borderRadius: '8px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',

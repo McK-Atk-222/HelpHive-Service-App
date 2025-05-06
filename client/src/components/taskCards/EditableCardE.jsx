@@ -85,18 +85,6 @@ const EditableCardE = ({data}) => {
         );
     };
 
-    // const cardStyle = {
-    //     border: "1px solid #ccc", // Light gray border
-    //     borderRadius: "8px", // Rounded corners
-    //     padding: "16px", // Space inside the box
-    //     margin: "16px", // Space between cards
-    //     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
-    //     backgroundColor: "#fff8e1", // White background
-    //     display: "flex", // Flexbox layout for two columns
-    //     flexDirection: "row", // Arrange children in a row
-    //     gap: "16px", // Gap between left and right sections
-    // }
-
     const leftColumnStyle = {
         flex: "1", // Take up equal space
         display: "flex",
