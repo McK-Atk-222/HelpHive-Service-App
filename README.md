@@ -51,11 +51,11 @@ As a non-registered user, I can submit public help requests through the homepage
 
 
 ## Screenshots
-[!Main Page]()
-[!Login Page]()
+[!Main Page](assets/HelpHive - Main Page.png)
+[!Login Page](assets/HelpHive - User Login.png)
 [!Task Board]()
-[!]()
-[!]()
+[!User Registration](assets/HelpHive - Register User.png)
+[!Admin Controls Page](assets/HelpHive - Admin Controls Page.png)
 
 ## Links
 GitHub Repo: https://github.com/McK-Atk-222/HelpHive-Service-App.git
