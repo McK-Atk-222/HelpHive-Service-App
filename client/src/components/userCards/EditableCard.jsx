@@ -15,12 +15,13 @@ const EditableCard = ({data}) => {
 
     const handleChange = (e) => {
         const{name,value} = e.target
-        setCardCompleted(existingData => ({...existingData, [name]:value}))
+        setCardInfo(existingData => ({...existingData, [name]:value}))
     }
     const [updateUser, {error}] = useMutation(UPDATE_USER);
     const handleUpdateUser = async () => {
         try { await updateUser({
             variables:{
+            _id: data._id,
             ...cardInfo
             }
         })
