@@ -65,6 +65,6 @@ Deployment Link: https://helphive-service-app.onrender.com/
 
 Deployed App Users:
 
-Admin1: (a1@gmail.com, 111)
-Manager2: (m2@gmail.com, 222)
+Admin1: (a1@gmail.com, 111);
+Manager2: (m2@gmail.com, 222);
 Employee3: (e3@gmail.com, 333)
