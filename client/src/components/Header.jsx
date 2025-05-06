@@ -2,7 +2,7 @@ import HamburgerButton from './HamburgerButton';
 
 const Header = () => {
   const headerStyle = {
-    padding: '25px 0',
+    padding: '12px 0',
     textAlign: 'center',
     position: 'relative',
     width: '100%',
@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header style={headerStyle}>
       <h1 style={h1Style}>Help Hive</h1>
-      <HamburgerButton />
+      {/* <HamburgerButton /> */}
     </header>
   );
 };
