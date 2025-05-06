@@ -53,7 +53,7 @@ Future devlopment may implementing socket.io or live updates when new task is re
 
 ## Screenshots
 ![Main Page](assets/HelpHive%20-%20Main%20Page.png)
-![Login Page](assets/HelpHIve%20-%20User%20Login.png)
+![Login Page](assets/HelpHive%20-%20User%20Login.png)
 ![Task Board](assets/HelpHive%20-%20Task%20Board.png)
 ![User Registration](assets/HelpHive%20-%20Register%20User.png)
 ![Admin Controls Page](assets/HelpHive%20-%20Admin%20Controls%20Page.png)
