@@ -1,10 +1,10 @@
 import { useState } from "react"
 import TaskCard from "../TaskCard"
 import { useMutation } from "@apollo/client"
-import { UPDATE_NOTE } from "../../api/mutations"
+import { DELETE_NOTE, UPDATE_NOTE } from "../../api/mutations"
 
 const EditableCardM = ({data}) => {
-    
+
     const completionText = data.completed?"Completed":"Incomplete"
 
     const timeStamp = new Date(data.createdAt)
@@ -22,18 +22,31 @@ const EditableCardM = ({data}) => {
     // //these below isn't correct...
     // const [cardCompleted, setCardCompleted] = useState()
     
-
-
-
     const handleChange = (e) => {
         const{name,value} = e.target
-        setCardCompleted(existingData => ({...existingData, [name]:value}))
+        setCardInfo(existingData => ({...existingData, [name]:value}))
     }
-    const [updateNote, {error}] = useMutation(UPDATE_NOTE);
+
+    const [updateNote, {updateError}] = useMutation(UPDATE_NOTE);
+
     const handleUpdateTask = async () => {
         try { await updateNote({
             variables:{
+            _id: data._id,  
             ...cardInfo
+            }
+        })
+        } catch (updateError) {
+        console.log(updateError)
+        }
+    }
+
+    const [deleteNote, {error}] = useMutation(DELETE_NOTE);
+
+    const handleDeleteTask = async () => {
+        try { await deleteNote({
+            variables:{
+            _id: data._id,  
             }
         })
         } catch (error) {
@@ -119,7 +132,7 @@ const EditableCardM = ({data}) => {
                 <button style={saveButtonStyle} onClick={handleUpdateTask}>
                     Save
                 </button>
-                <button style={deleteButtonStyle}>
+                <button onClick={handleDeleteTask} style={deleteButtonStyle}>
                     Delete Task (Completed or Voided)
                 </button>
             </div>

@@ -86,7 +86,7 @@ export const DELETE_NOTE = gql`
         deleteNote(_id: $_id) {
             _id
             title
-            content
+            text
         }
     }
 `

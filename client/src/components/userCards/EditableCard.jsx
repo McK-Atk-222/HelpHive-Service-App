@@ -1,7 +1,7 @@
 import { useState } from "react"
 import userCard from "../UserCard"
 import { useMutation } from "@apollo/client"
-import { UPDATE_USER } from "../../api/mutations"
+import { DELETE_USER, UPDATE_USER } from "../../api/mutations"
 
 const EditableCard = ({data}) => {
 
@@ -17,7 +17,7 @@ const EditableCard = ({data}) => {
         const{name,value} = e.target
         setCardInfo(existingData => ({...existingData, [name]:value}))
     }
-    const [updateUser, {error}] = useMutation(UPDATE_USER);
+    const [updateUser, {updateError}] = useMutation(UPDATE_USER);
     const handleUpdateUser = async () => {
         try { await updateUser({
             variables:{
@@ -25,10 +25,23 @@ const EditableCard = ({data}) => {
             ...cardInfo
             }
         })
+        } catch (updateError) {
+        console.log(updateError)
+        }
+    }
+
+    const [deleteUser, {error}] = useMutation(DELETE_USER);
+    const handleDeleteUser = async () => {
+        try { await deleteUser({
+            variables:{
+            _id: data._id,  
+            }
+        })
         } catch (error) {
         console.log(error)
         }
     }
+
 
         return (
             <div>
@@ -46,7 +59,7 @@ const EditableCard = ({data}) => {
                 <button onClick={handleUpdateUser}>
                     Save
                 </button>
-                <button onClick={handleUpdateUser}>
+                <button onClick={handleDeleteUser}>
                     Remove User
                 </button>
             </div>
