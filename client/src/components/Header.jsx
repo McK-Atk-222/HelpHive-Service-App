@@ -19,7 +19,7 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      <h1 style={h1Style}>Help Hive</h1>
+      <h1 style={h1Style}>Help Hive 🐝</h1>
       {/* <HamburgerButton /> */}
     </header>
   );

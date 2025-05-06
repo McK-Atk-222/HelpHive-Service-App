@@ -4,11 +4,16 @@ import { useMutation } from "@apollo/client"
 import { UPDATE_NOTE } from "../../api/mutations"
 
 const EditableCardE = ({data}) => {
-    const completionText = data.completed?"Completed":"Incomplete"
 
-    const timeStamp = new Date(data.createdAt)
+    const completionText = data.completed?"Status: ✅Completed":"Status: 🟥Incomplete"
+
+    const startTimeStamp = new Date(data.createdAt)
     const options = {month: "long", year: "numeric", day: "2-digit"}
-    const formattedTimeStamp = timeStamp.toDateString("en-US", options)
+    const formattedStartTimeStamp = startTimeStamp.toDateString("en-US", options)
+
+    const updateTimeStamp = new Date(data.updatedAt)
+    const options2 = {month: "long", year: "numeric", day: "2-digit"}
+    const formattedUpdateTimeStamp = updateTimeStamp.toDateString("en-US", options2)
 
     const [cardInfo, setCardInfo] = useState(
         data.text
@@ -37,7 +42,7 @@ const EditableCardE = ({data}) => {
         padding: "16px", // Space inside the box
         margin: "16px", // Space between cards
         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
-        backgroundColor: "#fff", // White background
+        backgroundColor: "#fff8e1", // White background
         display: "flex", // Flexbox layout for two columns
         flexDirection: "row", // Arrange children in a row
         gap: "16px", // Gap between left and right sections
@@ -77,35 +82,38 @@ const EditableCardE = ({data}) => {
         <div style={cardStyle}>
             {/* Left Column */}
             <div style={leftColumnStyle}>
-                <p>Assigned Employee:
+                <p>Assigned Employee:</p>
                     <div>
-                        {data.user}
+                   {data.user}
                     </div>
+                <p>Customer Info:</p>
+                <p>
+                &#9;{data.customerName}
                 </p>
                 <p>
-                    {data.customerName}
+                &#9;{data.customerContact}
                 </p>
-                <p>
-                    {data.customerContact}
-                </p>
-
-                <textarea rows={5} value={cardText} onChange={handleChange} />
+                <p>Case Notes:</p>
+                <textarea rows={5} value={cardInfo} onChange={handleChange} />
             </div>
 
             {/* Right Column */}
             <div style={rightColumnStyle}>
-                <h1>{data.title}</h1>
-
-                    <textarea rows={5} value={cardInfo} onChange={handleChange}/>
+                <h2>{data.title}</h2>
 
                 <p>
                     {completionText}
                 </p>
+                <p>Date Received:</p>
                 <p>
-                    {formattedTimeStamp}
+                    {formattedStartTimeStamp}
+                </p>
+                <p>Date Last Updated:</p>
+                <p>
+                    {formattedUpdateTimeStamp}
                 </p>
                 <button style={saveButtonStyle} onClick={handleUpdateTask}>
-                    Save
+                    Save 💾
                 </button>
             </div>
         </div>

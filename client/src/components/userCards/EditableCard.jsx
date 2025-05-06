@@ -36,7 +36,8 @@ const EditableCard = ({data}) => {
             variables:{
             _id: data._id,  
             }
-        })
+        }); 
+        location.reload()
         } catch (error) {
         console.log(error)
         }

@@ -114,7 +114,7 @@ const AdminPanel = (userRole) => {
 
     return (
         <div className="AdminPanel">
-            <h1 style={h1Style}>Admin Controls</h1>
+            <h1 style={h1Style}>🔧 Admin Controls</h1>
             <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
             <div style={containerStyle}>
                 <a href="/dashboard">

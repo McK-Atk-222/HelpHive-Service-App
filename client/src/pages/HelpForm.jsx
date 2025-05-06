@@ -100,7 +100,7 @@ const HelpForm = () => {
     <div>
     <div style={buttonContainerStyle}>
       <a href="/login">
-          <button style={adminButtonStyle}>Login</button>
+          <button style={adminButtonStyle}>Login 🔐</button>
        </a>
     </div>
     <form id="helpForm" style={formStyle} onSubmit={handleSubmit}>
