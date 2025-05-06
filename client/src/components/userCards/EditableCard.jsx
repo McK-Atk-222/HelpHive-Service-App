@@ -44,26 +44,35 @@ const EditableCard = ({data}) => {
 
 
         return (
-            <div>
-                <h1>
-                    <div>
-                        <textarea rows={1} value={cardInfo.username} name="username" onChange={handleChange}/>
-                    </div>
-                </h1>
-                <p>
-                    <textarea rows={1} value={cardInfo.email} name="email" onChange={handleChange}/>
-                </p>
-                <p>
-                    <textarea rows={1} value={cardInfo.role} name="role" onChange={handleChange}/>
-                </p>
-                <button onClick={handleUpdateUser}>
-                    Save
-                </button>
-                <button onClick={handleDeleteUser}>
-                    Remove User
-                </button>
-            </div>
-        )
-}
+            <div className="user-card">
+                <label>Username:</label>
+                    <input
+                        type="text"
+                        name="username"
+                        value={cardInfo.username}
+                        onChange={handleChange}
+                    />
+                    <label>Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={cardInfo.email}
+                        onChange={handleChange}
+                    />
+                    <label>Role:</label>
+                    <input 
+                        type="text"
+                        name="role"
+                        value={cardInfo.role}
+                        onChange={handleChange}
+                    />
 
-export default EditableCard
+                    <button className="save-btn" onClick={handleUpdateUser}>
+                        Save Changes
+                    </button>
+                    <button className="remove-btn" onClick={handleUpdateUser}>
+                        Remove User
+                    </button>
+            </div>
+        );
+    };
