@@ -23,8 +23,8 @@ const noteSchema = new Schema<NoteDocument>(
         default: 'N/A'
     },
     user: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        default: 'No User Assigned'
     },
     title: {
         type: String,

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ME = gql`
-  query me {
-    user {
+ {
+    me {
         _id
         username
         email
@@ -12,8 +12,8 @@ export const ME = gql`
 `;
 
 export const GET_USER = gql`
-  query getUser {
-    user {
+ {
+    getUser {
         _id
         username
         email
@@ -23,19 +23,19 @@ export const GET_USER = gql`
 `;
 
 export const GET_ALL_USERS = gql`
-  query getAllUsers {[
-    user {
+{
+    getAllUsers {
         _id
         username
         email
         role
     }
-    ]}
+    }
 `;
 
 export const GET_NOTE = gql`
-    query getNote {
-        note {
+ {
+      getNote {
             _id
             customerName
             customerContact
@@ -48,8 +48,8 @@ export const GET_NOTE = gql`
 `;
 
 export const GET_ALL_NOTES = gql`
-    query getAllNotes {[
-    note {
+   {
+    getAllNotes {
             _id
             customerName
             customerContact
@@ -58,5 +58,5 @@ export const GET_ALL_NOTES = gql`
             text
             completed
          }
-]}
+}
 `;

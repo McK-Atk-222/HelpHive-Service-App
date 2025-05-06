@@ -46,6 +46,22 @@ const buttonStyle = {
   transition: 'background-color 0.2s, transform 0.1s'
 };
 
+const adminButtonStyle = {
+  backgroundColor: 'white',
+  color: '#333',
+  border: 'none',
+  padding: '10px 20px',
+  cursor: 'pointer',
+  fontSize: '16px',
+  borderRadius: '4px',
+  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+  transition: 'background-color 0.2s, transform 0.1s'
+};
+const buttonContainerStyle = {
+  textAlign: 'right',
+  padding: '10px'
+};
+
 const HelpForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -81,6 +97,10 @@ const HelpForm = () => {
   };
 
   return (
+    <div>
+    <div style={buttonContainerStyle}>
+          <button style={adminButtonStyle}>Login</button>
+    </div>
     <form id="helpForm" style={formStyle} onSubmit={handleSubmit}>
       <div style={formGroupStyle} className="form-group">
         <input
@@ -124,6 +144,7 @@ const HelpForm = () => {
         </button>
       </div>
     </form>
+    </div>
   );
 };
 
