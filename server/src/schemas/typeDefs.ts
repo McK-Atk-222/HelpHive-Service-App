@@ -23,6 +23,8 @@ const typeDefs = gql`
         title: String
         text: String
         completed: Boolean
+        createdAt: String
+        updatedAt: String
     }
 
     type Query {

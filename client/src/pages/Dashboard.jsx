@@ -23,13 +23,20 @@ const adminButtonStyle = {
     gap: '10px', // Add spacing between buttons
     padding: '10px'
 };
+const welcome = {
+    color: '#ffffff',
+    textShadow: '2px 2px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(240, 204, 0, 0.7)',
+    fontSize: '1.8rem',
+    fontWeight: 'bold',
+    letterSpacing: '1px'
+  };
 
 const Dashboard = () => {
     // Function to get the current user from auth context
     const { authData } = useAuth() || {};
     const user = authData?.user;
     
-    if (!auth.loggedIn){
+    if (!auth.loggedIn()){
         window.location.href = "/login"
     }
 
@@ -45,11 +52,11 @@ const Dashboard = () => {
             <div style={buttonContainerStyle}>
                     <button style={adminButtonStyle} onClick={() => { auth.logout() }}>Logout 🔐</button>
                     <a href="/admin">
-                        <button style={adminButtonStyle}>Admin Panel</button>
+                        <button style={adminButtonStyle}>Admin Controls 🔧</button>
                     </a>
             </div>
             <div classname="dashboard">
-                <h1>Welcome, {userData.username || 'User'}! 🍯</h1>
+                <h1 style={welcome}>Welcome, {userData.username || 'User'}! 🍯</h1>
                 <p>Your Role: <strong>{userData.role}</strong></p>
                 
                 <TaskCard userRole={userData.role}/>
@@ -64,7 +71,7 @@ const Dashboard = () => {
             <div style={buttonContainerStyle}>
                 <button style={adminButtonStyle} onClick={() => {auth.logout()}}>Logout 🔐</button>
             </div>
-            <h1>Welcome, {userData.username || 'User'}! 🍯</h1>
+            <h1 style={welcome}>Welcome, {userData.username || 'User'}! 🍯</h1>
             <p>Your Role: <strong>{userData.role}</strong></p>
             
             <TaskCard userRole={userData.role}/>

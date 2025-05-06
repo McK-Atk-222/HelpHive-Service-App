@@ -13,7 +13,12 @@ const {loading, data} = useQuery(GET_ALL_NOTES)
    }
    
    const noteData = data.getAllNotes
-    
+
+   const managerRole = () => {
+    if (userRole==="Manager" || userRole==="Admin") return true
+   return false
+    }
+
     return (
         <>
             {noteData.map((note) => {
@@ -23,7 +28,7 @@ const {loading, data} = useQuery(GET_ALL_NOTES)
                         userRole==="Employee" && <EditableCardE data={note}/> 
                     }
                     {
-                        userRole==="Manager" || userRole==="Admin" && <EditableCardM data={note}/> 
+                        managerRole() && <EditableCardM data={note}/> 
                     }
                     </>
                 )

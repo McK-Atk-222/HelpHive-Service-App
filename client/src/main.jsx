@@ -8,12 +8,13 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import AdminPanel from './pages/AdminPanel';
 import Register from './pages/Register';
+import HoneycombBackground from './components/HoneycombBackground';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <h1 className='display-2'>Wrong page!</h1>,
+    errorElement: <div><HoneycombBackground/><h1 className='display-2'>Wrong page!</h1></div>,
     children: [
       {
         index: true,

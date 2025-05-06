@@ -117,12 +117,12 @@ main {
 }
 
 .save-btn {
-  background-color: #ffd600;
+  background-color: #4CAF50;
   margin-bottom: 5px;
 }
 
 .remove-btn {
-  background-color: #fff;
+  background-color: #ffd600;
   border: 1px solid #ccc;
 }
 

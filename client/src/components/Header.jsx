@@ -1,5 +1,3 @@
-import HamburgerButton from './HamburgerButton';
-
 const Header = () => {
   const headerStyle = {
     padding: '12px 0',
@@ -20,7 +18,6 @@ const Header = () => {
   return (
     <header style={headerStyle}>
       <h1 style={h1Style}>Help Hive 🐝</h1>
-      {/* <HamburgerButton /> */}
     </header>
   );
 };

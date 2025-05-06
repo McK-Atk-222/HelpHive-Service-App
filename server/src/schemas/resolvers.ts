@@ -17,6 +17,8 @@ interface INote {
   title: string;
   text: string;
   completed: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface Context {

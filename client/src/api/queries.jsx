@@ -43,6 +43,8 @@ export const GET_NOTE = gql`
             title
             text
             completed
+            createdAt
+            updatedAt
          }
     }
 `;
@@ -57,6 +59,8 @@ export const GET_ALL_NOTES = gql`
             title
             text
             completed
+            createdAt
+            updatedAt
          }
 }
 `;

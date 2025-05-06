@@ -88,7 +88,7 @@ const AdminPanel = (userRole) => {
     const { authData } = useAuth() || {};
     const user = authData?.user;
 
-    if (!auth.loggedIn){
+    if (!auth.loggedIn()){
             window.location.href = "/login"
         } else if (auth.getProfile().data.role !== "Admin"){
             return <>
@@ -115,8 +115,6 @@ const AdminPanel = (userRole) => {
 
     return (
         <div className="AdminPanel">
-            <h1 style={h1Style}>🔧 Admin Controls</h1>
-            <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
             <div style={containerStyle}>
                 <a href="/dashboard">
               <button style={backButtonStyle}>Back to Dashboard</button>
@@ -125,12 +123,12 @@ const AdminPanel = (userRole) => {
               <button style={backButtonStyle}>Register New User</button>
                   </a>
               </div>
-
-              <h1 style={h1Style}>Admin Controls</h1>
-              <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
-              
+            <div style={{padding: "30px 0px 30px 0px"}}>
+              <h1 style={h1Style}>🔧 Admin Controls</h1>
+              <p style={{padding: "0px 0px 0px 80px"}}>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
+            </div>
               <section style={{ width: '100%' }}>
-                  <h2 style={h2Style}>User Management</h2>
+                  <h2 style={h2Style}>User Management:</h2>
                   <UserCard userRole={data.me.role}/>
               </section>
           </div>
