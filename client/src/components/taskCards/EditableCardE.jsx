@@ -57,7 +57,7 @@ const EditableCardE = ({data}) => {
         if (data.title === "Manager Review Needed") {
             cardStyle = {
                 border: "4px solid #FF0000", // Red border
-                borderRadius: "8px", // Rounded corners
+                borderRadius: "15px", // Rounded corners
                 padding: "16px", // Space inside the box
                 margin: "16px", // Space between cards
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
@@ -69,7 +69,7 @@ const EditableCardE = ({data}) => {
         } else {
             cardStyle = {
                 border: "1px solid #ccc", // Light gray border
-                borderRadius: "8px", // Rounded corners
+                borderRadius: "15px", // Rounded corners
                 padding: "16px", // Space inside the box
                 margin: "16px", // Space between cards
                 boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
@@ -114,7 +114,7 @@ const EditableCardE = ({data}) => {
     const buttonStyle = {
         padding: "10px 20px", // Add padding for a better click area
         fontSize: "16px", // Increase font size for readability
-        borderRadius: "4px", // Rounded corners
+        borderRadius: "8px", // Rounded corners
         border: "none", // Remove default border
         cursor: "pointer", // Pointer cursor on hover
         transition: "background-color 0.3s, transform 0.2s", // Smooth transitions
