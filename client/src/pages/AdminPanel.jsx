@@ -114,8 +114,6 @@ const AdminPanel = (userRole) => {
 
         return (
           <div className="AdminPanel">
-              <h1 style={h1Style}>Admin Controls</h1>
-              <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
               <div style={containerStyle}>
                 <a href="/dashboard">
               <button style={backButtonStyle}>Back to Dashboard</button>
@@ -124,6 +122,10 @@ const AdminPanel = (userRole) => {
               <button style={backButtonStyle}>Register New User</button>
                   </a>
               </div>
+
+              <h1 style={h1Style}>Admin Controls</h1>
+              <p>Welcome, {data.me.username || 'Admin'}! Here you can manage all users.</p>
+              
               <section style={{ width: '100%' }}>
                   <h2 style={h2Style}>User Management</h2>
                   <UserCard userRole={data.me.role}/>

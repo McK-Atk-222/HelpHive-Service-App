@@ -15,19 +15,12 @@ const userData = data.getAllUsers || {}
 
     
 return (
-    <>
-        {userData.map((user) => {
-            return (
-                <>
-                {
-                    userRole==="Admin" && <EditableCard data={user}/> 
-                }
-                </>
-            ) 
-        })}
-    </>
-)
-    
+    <div className="user-card-container">
+        {userData.map((user) => (
+            userRole==="Admin" && <EditableCard data={user}/> 
+        ))}
+    </div>
+    );
 };
 
 export default userCard;
