@@ -15,8 +15,10 @@ HelpHive is a MERN-stack application that allows users to request help and manag
     > npm install
 2. Add JWT key and MongoDB URI to .env
 3. Start the app
-    * Frontend: npm start
-    * Backend: npm run build, npm start
+    * Frontend:
+    > npm start
+    * Backend:
+    > npm run build, npm start
 
 ## Usage
 As a new user, I can register by selecting a username, email, password, and role.
