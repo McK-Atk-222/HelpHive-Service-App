@@ -29,12 +29,12 @@ As an Administrator, I can manage other users accounts
 As a non-registered user, I can submit public help requests through the homepage without creating an account.
 
 ## Technologies Used
-** Frontend:
+* Frontend:
     * React
     * Vite
     * Apollo Client
     * GraphQL
-** Backend:
+* Backend:
     * Node.js
     * Express.js
     * Apollo server
